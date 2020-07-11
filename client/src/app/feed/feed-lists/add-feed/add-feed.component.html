@@ -1,0 +1,85 @@
+<div id="add-feed">
+  <div class="card is-wide">
+    <!-- Card Header -->
+    <div class="card-content">
+      <div class="is-flex">
+        <!-- Avatar -->
+        <div class="media">
+          <div class="media-left">
+            <figure class="image is-48x48">
+              <img
+                src="../../../assets/img/avatar.png"
+                alt="Placeholder image"
+              />
+            </figure>
+          </div>
+          <!-- User name and role -->
+          <div class="media-content">
+            <p class="title is-5">John Smith</p>
+            <p class="subtitle is-6 has-text-grey-light">Entrepreneur</p>
+          </div>
+        </div>
+        <!-- Buttons Group -->
+        <div class="actions-btn">
+          <input
+            type="file"
+            name=""
+            id=""
+            class="file"
+            accept="image/*"
+            (change)="onFileSelected($event)"
+            #file
+          />
+          <!-- File selecting button -->
+          <button
+            class="button is-normal is-rounded mr-2"
+            (click)="file.click()"
+          >
+            <span class="icon is-small">
+              <i class="far fa-image"></i>
+            </span>
+            <span>Add</span>
+          </button>
+          <!-- Post feed button -->
+          <button
+            class="button is-normal is-rounded"
+            (click)="onPostFeed()"
+            [disabled]="isDisabled || (!selectedImage && !feedContent)"
+          >
+            <span class="icon is-small">
+              <i class="far fa-paper-plane"></i>
+            </span>
+            <span>Post</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Card Footer -->
+    <div class="card-footer">
+      <app-loading *ngIf="isLoading"></app-loading>
+      <!-- Preview image -->
+      <div class="preview" *ngIf="previewImage">
+        <figure class="image is-200w is-relative">
+          <img [src]="previewImage" alt="" />
+          <a class="delete" (click)="onDeleteFile()"></a>
+        </figure>
+      </div>
+      <!-- Error message for bigger size file -->
+      <div class="file-error" *ngIf="biggerImage">
+        {{ biggerImage }}
+      </div>
+      <!-- Feed content -->
+      <div class="control">
+        <textarea
+          class="textarea"
+          rows="1"
+          placeholder="Hey! Try something here..."
+          maxlength="200"
+          [(ngModel)]="feedContent"
+        ></textarea>
+        <!-- Character counting using two-way binding -->
+        <small id="count_message"> {{ feedContent.length }}/200 </small>
+      </div>
+    </div>
+  </div>
+</div>

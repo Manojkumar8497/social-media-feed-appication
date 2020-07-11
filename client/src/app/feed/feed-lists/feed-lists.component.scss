@@ -1,0 +1,24 @@
+@import "../../../main-style.scss";
+
+// Feed
+#feed {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  // Feed container
+  .feed-body {
+    width: 500px;
+    // Helper message
+    .helper-text {
+      button {
+        border-color: transparent;
+        &:hover {
+          border-color: transparent;
+          cursor: text;
+        }
+      }
+    }
+  }
+}

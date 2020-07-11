@@ -1,0 +1,79 @@
+<!-- Top bar section -->
+<section id="header">
+  <nav
+    class="navbar is-link is-fixed-top"
+    role="navigation"
+    aria-label="main navigation"
+  >
+    <div class="container">
+      <!-- Navbar brand -->
+      <div class="navbar-brand">
+        <a class="navbar-item">
+          <button class="button">
+            <span class="icon">
+              <h2><b>M</b></h2>
+            </span>
+          </button>
+        </a>
+        <!-- Navbar burger -->
+        <a
+          role="button"
+          class="navbar-burger"
+          data-target="navbarBasicExample"
+          aria-label="menu"
+          aria-expanded="false"
+          #navBurger
+          (click)="toggleNavbar()"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <!-- Navbar Items -->
+      <div id="navbarBasicExample" class="navbar-menu" #navMenu>
+        <!-- Navbar left Search input -->
+        <div class="navbar-start">
+          <div class="navbar-item">
+            <div class="control has-icons-left has-icons-right">
+              <input class="input" type="email" placeholder="Search" />
+              <span class="icon is-left">
+                <i class="fas fa-search"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navbar right - links -->
+        <div class="navbar-end custom-nav">
+          <a
+            class="navbar-item"
+            *ngFor="let navbarLink of navbarLinks"
+            [routerLink]="navbarLink.link"
+            routerLinkActive="is-active"
+            (click)="closeNavbar()"
+          >
+            <i [class]="navbarLink.icon"></i>
+            <span>{{ navbarLink.text }}</span>
+          </a>
+          <!-- Profile -->
+          <a
+            class="navbar-item"
+            routerLink="/profile"
+            routerLinkActive="is-active"
+            (click)="closeNavbar()"
+          >
+            <figure class="image is-24x24">
+              <img
+                src="../../../assets/img/avatar.png"
+                alt="Placeholder image"
+              />
+            </figure>
+            <span>My Profile</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</section>

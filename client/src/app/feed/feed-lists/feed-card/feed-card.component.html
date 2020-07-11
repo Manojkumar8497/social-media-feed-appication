@@ -1,0 +1,61 @@
+<div id="feed-card" *ngIf="feed">
+  <div class="card is-shadow mb-5">
+    <!-- Card Content -->
+    <div class="card-content">
+      <div class="is-flex">
+        <!-- Feed Header -->
+        <div class="media">
+          <div class="media-left">
+            <!-- Avatar image -->
+            <figure class="image is-48x48">
+              <img
+                class="is-rounded"
+                src="../../../assets/img/avatar.png"
+                alt="Placeholder image"
+              />
+            </figure>
+          </div>
+          <!-- User name and role -->
+          <div class="media-content">
+            <p class="title is-5">{{ feed.creator.name | titlecase }}</p>
+            <p class="subtitle is-6 has-text-grey-light">
+              {{ feed.creator.role | titlecase }}
+            </p>
+          </div>
+        </div>
+        <!-- Feed created time -->
+        <div class="feed-time has-text-grey-light">
+          {{ feed.createdAt | date }}
+        </div>
+      </div>
+      <!-- Feed Content -->
+      <div class="content mt-3 has-text-justified">{{ feed.content }}</div>
+    </div>
+    <!-- Card image -->
+    <div class="card-image" *ngIf="feed.image">
+      <figure class="image">
+        <img [src]="feed.image.imagePath" alt="Image not found" />
+      </figure>
+    </div>
+    <!-- Card footer -->
+    <div class="card-footer">
+      <!-- like button -->
+      <p class="icon is-medium" (click)="onLiked()">
+        <i
+          class="fa-heart fa-lg"
+          [ngClass]="{ fas: isLiked, far: !isLiked }"
+        ></i>
+      </p>
+      <!-- Comment button -->
+      <p class="icon is-medium">
+        <i class="far fa-comment fa-lg"></i>
+      </p>
+      <!-- Forward button -->
+      <p class="icon is-medium">
+        <i class="far fa-share-square fa-lg"></i>
+      </p>
+      <!-- Likes and comments count -->
+      <p class="likes-text">{{ feed.likes }} Likes, 3 Comments</p>
+    </div>
+  </div>
+</div>

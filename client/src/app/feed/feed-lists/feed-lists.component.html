@@ -1,0 +1,47 @@
+<section id="feed">
+  <div class="feed-body">
+    <!-- Add new feed -->
+    <app-add-feed
+      (isNewFeed)="onLoading($event)"
+      (newFeed)="updateFeedsList($event)"
+    ></app-add-feed>
+    <hr />
+    <!-- Helper message for no feeds -->
+    <div
+      class="helper-text has-text-centered"
+      *ngIf="feedsList.length < 1 && !isLoading"
+    >
+      <button class="button is-rounded has-background-white-ter">
+        Sorry! No posts avaliable :(
+      </button>
+    </div>
+    <!-- Loading for new post -->
+    <div class="mb-4" *ngIf="isLoading">
+      <app-loading></app-loading>
+    </div>
+    <!-- Feeds List -->
+    <div class="feed" *ngIf="feedsList.length">
+      <!-- Feed Card -->
+      <app-feed-card
+        *ngFor="let feed of feedsList"
+        [feed]="feed"
+      ></app-feed-card>
+    </div>
+    <!-- Infinite scroll -->
+    <div
+      class="search-results"
+      infiniteScroll
+      [infiniteScrollDistance]="2"
+      [infiniteScrollThrottle]="1000"
+      (scrolled)="onScroll()"
+    ></div>
+    <!-- loading -->
+    <app-loading *ngIf="!isFinished && !isLoading"></app-loading>
+    <!-- End the page reached notification -->
+    <div *ngIf="feedsList.length">
+      <div class="has-text-centered has-text-danger" *ngIf="isFinished">
+        You've reached the end of the page
+      </div>
+    </div>
+  </div>
+</section>

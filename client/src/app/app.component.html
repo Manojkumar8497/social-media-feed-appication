@@ -1,0 +1,12 @@
+<!-- Pre Loading -->
+<ngx-loading [show]="isLoading"></ngx-loading>
+
+<!-- Header -->
+<app-header></app-header>
+
+<!-- router -->
+<section class="router-page" [ngClass]="{ loading: isLoading }">
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</section>

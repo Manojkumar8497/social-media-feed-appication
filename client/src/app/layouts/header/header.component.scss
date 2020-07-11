@@ -1,0 +1,70 @@
+@import "../../../main-style.scss";
+@import "../../../mixins.scss";
+
+// Top bar section
+#header {
+  // Navbar
+  .navbar {
+    box-shadow: 3px 0 26px -8px rgba(0, 0, 40, 0.4);
+
+    .container {
+      // Navbar brand
+      .navbar-brand {
+        .button {
+          border-radius: 0;
+        }
+        // Navbar burger icon
+        .navbar-burger {
+          span {
+            height: 2.5px;
+          }
+        }
+      }
+      // Navbar menu
+      .navbar-menu {
+        // Navbar right links
+        .custom-nav {
+          @include lg {
+            display: flex;
+            flex-flow: row wrap;
+          }
+          // Navbar active link
+          .is-active {
+            border-bottom: 3px solid white;
+            background-color: transparent;
+
+            &:hover {
+              background-color: #2366d1;
+
+              @include lg {
+                background-color: transparent;
+              }
+            }
+          }
+          // navbar links
+          .navbar-item {
+            display: flex;
+            flex-flow: column nowrap;
+            align-items: center;
+            padding: 0.75rem 1.5rem !important;
+
+            @include lg {
+              display: inline-flex;
+              flex-flow: column wrap;
+              flex-grow: 1;
+            }
+
+            i {
+              font-size: 1.5rem;
+            }
+
+            span {
+              font-size: 0.7rem;
+              margin: 2px 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}

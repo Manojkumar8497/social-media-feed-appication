@@ -1,0 +1,77 @@
+@import "../../../../mixins.scss";
+
+// Add feed header
+#add-feed {
+  // Card
+  .card.is-wide {
+    // Avatar
+    .media {
+      margin-bottom: 0;
+      flex-grow: 1;
+    }
+    // Avatar inner content
+    .card-content {
+      border-radius: 5px;
+      background-color: #f5f5f5;
+      padding: 1rem;
+      .is-flex {
+        @include xs {
+          flex-flow: column wrap;
+        }
+        .media {
+          @include xs {
+            align-self: center;
+            padding: 10px 0;
+          }
+        }
+      }
+      // Add and post button
+      .actions-btn {
+        @include xs {
+          align-self: center;
+          padding: 10px 0;
+        }
+        .file {
+          display: none;
+        }
+        button {
+          border: 1.2px solid #000;
+        }
+      }
+    }
+    // Card footer for preview image and textarea
+    .card-footer {
+      display: inline;
+      // Preview image
+      .preview {
+        padding: 20px 15px 0px 20px;
+        .is-200w {
+          width: 200px;
+        }
+        .delete {
+          position: absolute;
+          top: -10px;
+          right: -10px;
+        }
+      }
+      // Bigger size file error
+      .file-error {
+        text-align: center;
+        color: red;
+        margin-top: 5px;
+        font-size: 0.8rem;
+      }
+      // Textarea word count
+      .control {
+        position: relative;
+        padding: 10px;
+        #count_message {
+          position: absolute;
+          bottom: 20px;
+          right: 25px;
+          color: rgb(194, 194, 212);
+        }
+      }
+    }
+  }
+}

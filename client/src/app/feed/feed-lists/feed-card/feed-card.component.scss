@@ -1,0 +1,61 @@
+@import "../../../../mixins.scss";
+// Feed Card
+#feed-card {
+  // For smaller screen
+  @include lg {
+    padding: 0 10px;
+  }
+  .card {
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    // Feed card header
+    .media {
+      margin-bottom: 0;
+      flex-grow: 1;
+    }
+    // Card content
+    .card-content {
+      border-radius: 5px;
+      padding: 1rem;
+      .is-flex {
+        @include xs {
+          flex-flow: column wrap;
+        }
+        .media {
+          @include xs {
+            align-self: flex-start;
+            padding: 10px 0;
+          }
+        }
+      }
+      // Feed createdAt time
+      .feed-time {
+        align-self: flex-end;
+        @include xs {
+          align-self: flex-start;
+        }
+      }
+    }
+    // Card footer
+    .card-footer {
+      padding: 10px;
+      // Like, comment and share icon
+      .icon {
+        margin-right: 5px;
+        // Like icon
+        .fas.fa-heart {
+          color: red;
+        }
+        &:hover {
+          cursor: pointer;
+        }
+      }
+      // Likes & Comment text
+      .likes-text {
+        align-items: center;
+        display: inline-flex;
+        justify-content: center;
+      }
+    }
+  }
+}
